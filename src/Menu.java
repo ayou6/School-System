@@ -9,7 +9,8 @@ public class Menu {
                 System.out.println("[4] Print All / Transcript");
                 System.out.println("[5] Search Students");
                 System.out.println("[6] App Statistics");
-                System.out.println("[7] Exit");
+                System.out.println("[7] Enter Email");
+                System.out.println("[8] Exit");
 
 
         }

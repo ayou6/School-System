@@ -9,14 +9,14 @@ public class Submenu {
             System.out.println("[1] Setup School Details");
             System.out.println("[2] Enter Subject Name");
             System.out.println("[3] Go Back");
-            int choose = Main.scn.nextInt();
+            String choose = Main.scn.next();
             switch (choose) {
-                case 1:
+                case "1":
                     System.out.println("Enter School name: ");
                     String inputSchool = Main.scn.next();
                     Main.mySchool.name = inputSchool;
                     break;
-                case 2:
+                case "2":
                     boolean addSubjects = true;
                     while (addSubjects) {
                         System.out.println("Enter Subject name: ");
@@ -34,7 +34,7 @@ public class Submenu {
                         }
                     }
                     break;
-                case 3:
+                case "3":
                     subMenuLoop = false;
                     break;
 
