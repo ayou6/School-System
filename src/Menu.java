@@ -10,8 +10,11 @@ public class Menu {
                 System.out.println("[5] Search Students");
                 System.out.println("[6] App Statistics");
                 System.out.println("[7] Enter Email");
-                System.out.println("[8] Exit");
-
+                System.out.println("[8] Save File");
+                System.out.println("[9] Save at Folder ");
+                System.out.println("[10] Serialize ");
+                System.out.println("[11] Deserialize ");
+                System.out.println("[12] Exit");
 
         }
 }

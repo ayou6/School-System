@@ -12,7 +12,11 @@ public class Main {
 		int cntStat5 = 0;
 		int cntStat6 = 0;
 		int cntStat7 = 0;
-
+		int cntStat8 = 0;
+		int cntStat9 = 0;
+		int cntStat10 = 0;
+		int cntStat11 = 0;
+		
 		Menu Mn1 = new Menu();
 		Submenu Mn2 = new Submenu();
 		Fainalize fnl = new Fainalize();
@@ -27,7 +31,7 @@ public class Main {
 
 				cntStat1++;
 				boolean op = true;
- 
+
 				Mn2.Submenu();
 			} else if (Select.equals("2")) {
 				cntStat2++;
@@ -37,7 +41,7 @@ public class Main {
 					String stuInput = scn.next();
 					Student Stu = new Student();
 
-					Stu.stuName = stuInput;
+					Stu.setStuName(stuInput);
 					mySchool.studentList.add(Stu);
 					while (true) {
 						System.out.println("Student added. Add more students? (y/n)");
@@ -94,23 +98,24 @@ public class Main {
 
 			} else if (Select.equals("4")) {
 				cntStat4++;
-				if (mySchool.studentList.isEmpty()){
+				if (mySchool.studentList.isEmpty()) {
 					System.out.println("Add Student!");
-				}
-				else if (mySchool.subjectList.isEmpty()) {
+				} else if (mySchool.subjectList.isEmpty()) {
 					System.out.println("Add Subject");
-				}else {
-					System.out.printf("%20s %20s %20s %20s %20s\n", "School Name", "Student Name", "Student Email", "Subject Name", "Mark");
-					System.out.println("__________________________________________________________________________________________________________________");
+				} else {
+					System.out.printf("%20s %20s %20s %20s %20s\n", "School Name", "Student Name", "Student Email",
+							"Subject Name", "Mark");
+					System.out.println(
+							"__________________________________________________________________________________________________________________");
 					for (int i = 0; i < mySchool.studentList.size(); i++) {
 						for (int j = 0; j < mySchool.subjectList.size(); j++) {
-							System.out.printf("%20s %20s %20s %20s %20s\n", School.name, mySchool.studentList.get(i).stuName, mySchool.studentList.get(i).mailList,
+							System.out.printf("%20s %20s %20s %20s %20s\n", mySchool.name,
+									mySchool.studentList.get(i).stuName, mySchool.studentList.get(i).mailList,
 									mySchool.subjectList.get(j),
 									mySchool.studentList.get(i).studentSubjectList.get(j).studentMark.mark);
 						}
 					}
 				}
-
 
 			} else if (Select.equals("5")) {
 				cntStat5++;
@@ -121,7 +126,7 @@ public class Main {
 					String searchIn = scn.next();
 					for (int i = 0; i < mySchool.studentList.size(); i++) {
 						if (mySchool.studentList.get(i).stuName.equalsIgnoreCase(searchIn)) {
-							System.out.println("School Name: " + School.name);
+							System.out.println("School Name: " + mySchool.name);
 							System.out.println("Student Name:" + mySchool.studentList.get(i).stuName);
 							for (int j = 0; j < mySchool.subjectList.size(); j++) {
 								System.out.println(mySchool.subjectList.get(j) + " mark is: "
@@ -144,13 +149,19 @@ public class Main {
 				System.out.println("[4] Print All / Transcript: " + cntStat4);
 				System.out.println("[5] Search Students: " + cntStat5);
 				System.out.println("[6] App Statistics: " + cntStat6);
+				System.out.println("[7]  Enter Email " + cntStat7);
+				System.out.println("[8] Save" + cntStat8);
+				System.out.println("[9] Save at Folder " + cntStat9);
+	            System.err.println("[10] Serialize " + cntStat10);
+	            System.out.println("[11] Deserialize " + cntStat11);
+	            
 
 			} else if (Select.equals("7")) {
+				cntStat7++;
 				if (mySchool.studentList.size() == 0) {
 					System.out.println("No Student Found!!!!!");
-					
-				} 
-				else {
+
+				} else {
 					for (int i = 0; i < mySchool.studentList.size(); i++) {
 						System.out.println("[" + (i + 1) + "] " + mySchool.studentList.get(i).stuName);
 					}
@@ -160,25 +171,45 @@ public class Main {
 						Integer stuNo = Integer.parseInt(stuNoEntry);
 						if (stuNo > mySchool.studentList.size() || stuNo < 1) {
 							System.out.println("Invalid Input ");
-						}else {
+						} else {
 							System.out.println("Enter Email: ");
 							String eMail = scn.next();
 							mySchool.studentList.get(stuNo - 1).mailList.add(eMail);
 						}
 
-						
 					} catch (Exception e) {
 						System.out.println("Enter Valid Input!");
 					}
 
-
 				}
 
 			} else if (Select.equals("8")) {
+				cntStat8++;
+				Saver.saveData();
+				
+			}else if (Select.equals("9")) {
+				cntStat9++;
+				Folder.saveDataFolder();
+			}
+			else if (Select.equals("10")) {
+				cntStat10++;
+				
+				Serialize.serialize();
+				
+			} else if (Select.equals("11")) {
+				cntStat11++;
+				
+				Deserialize.deserialize();
+				
+			} 
+			
+			else if (Select.equals("12")) {
 				System.out.println("Chao <3");
 				break;
 
-			} else {
+			}
+			
+			else {
 				System.out.println("Invalid Input");
 			}
 
