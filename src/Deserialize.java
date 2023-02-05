@@ -1,3 +1,4 @@
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -7,18 +8,24 @@ public class Deserialize {
 	 try
 	    {
 	        
-	        FileInputStream file = new FileInputStream("C:\\Users\\Lenovo\\eclipse-workspace\\School\\transcript.txt");
+	        FileInputStream file = new FileInputStream("C:\\Users\\Lenovo\\eclipse-workspace\\School\\transcript3.txt");
 	        ObjectInputStream in = new ObjectInputStream(file);
 
 	        // Method for deserialization of object
-	        Student object1 = (Student) in.readObject();
+	        while (true) {
+	        	try {
+	    	        String object1 = (String) in.readObject();
+	    	        System.out.println(object1);
+	        	}
+	        	catch (EOFException e) {
+	        		break;
+	        	}
+	        }
 	        
 	        in.close();
 	        file.close();
             
 	        System.out.println("Object has been deserialized ");
-	        System.out.println("Student Name:  " + object1.getStuName() );
-	   
 	    }
 
 	    catch(IOException ex)
